@@ -1,0 +1,17 @@
+<div ng-controller="FreeTextResponsePollViewController as vm">
+    <form name="responseForm">
+        <md-whiteframe class="md-whiteframe-2dp wc-response" layout="row" layout-align="start end" mars-focus-when="!vm.hasSubmitted">
+            <md-input-container flex><label>Write a short text response</label><textarea name="textResponse" mars-autofocus maxlength="512" max-lines="16" ng-disabled="vm.hasSubmitted" ng-model="vm.textResponse">\n        </textarea>
+                <div ng-messages="responseForm.textResponse.$error">
+                    <div ng-message="lineLimit">You must stay under the 16 line limit</div>
+                </div>
+            </md-input-container>
+            <div style="padding-bottom: 20px;">
+                <md-button aria-label="Submit text response" class="md-icon-button" type="submit" ng-disabled="vm.hasSubmitted" ng-click="vm.submitResponse(vm.textResponse)">
+                    <md-icon class="material-icons">send</md-icon>
+                    <md-tooltip md-delay="400">Submit Response</md-tooltip>
+                </md-button>
+            </div>
+        </md-whiteframe>
+    </form>
+</div>

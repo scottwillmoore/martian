@@ -1,0 +1,22 @@
+<form name="responseForm" ng-controller="WordCloudPollViewController as vm">
+    <md-card>
+        <md-card-content>
+            <h2 class="md-title text-select-disabled">{{ poll.data.question }}</h2>
+        </md-card-content>
+    </md-card>
+    <md-whiteframe class="md-whiteframe-2dp wc-response" layout="row" layout-align="start center" mars-focus-when="!vm.hasSubmitted">
+        <md-input-container flex><label>Answer</label><input name="response" mars-autofocus md-maxlength="24" ng-disabled="vm.hasSubmitted" ng-model="vm.response">
+            <div ng-messages="responseForm.response.$error">
+                <div ng-message="required">This is required</div>
+            </div>
+        </md-input-container>
+        <md-button aria-label="Submit response" class="md-icon-button" type="submit" ng-click="vm.submitResponse(vm.response)" ng-disabled="responseForm.$invalid" ng-hide="vm.hasSubmitted">
+            <md-icon class="material-icons">done</md-icon>
+            <md-tooltip md-delay="400">Submit Response</md-tooltip>
+        </md-button>
+        <md-button aria-label="Clear response" class="md-icon-button" ng-click="vm.clearResponse()" ng-disabled="!vm.hasSubmitted" ng-show="vm.hasSubmitted">
+            <md-icon class="material-icons">close</md-icon>
+            <md-tooltip md-delay="400">Clear Response</md-tooltip>
+        </md-button>
+    </md-whiteframe>
+</form>

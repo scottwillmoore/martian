@@ -1,0 +1,19 @@
+<!--<div flex layout="column">\n\n  <md-toolbar class="md-whiteframe-1dp">\n    <div class="md-toolbar-tools">\n      {{vm.poll ? vm.poll.pollCollection.name : \'Mars\'}}\n      <span ng-hide="vm.poll" class="beta">beta</span>\n      <span flex></span>\n      <md-button class="md-icon-button" \n                 aria-label="Join Feed" \n                 ng-click="vm.showSubscribeDialog($event)">\n        <md-tooltip md-delay="400">Join Feed</md-tooltip>\n        <md-icon class="material-icons"> add </md-icon>\n      </md-button>     \n      <md-menu md-position-mode="target-right target" >\n        <md-button class="md-icon-button" \n                   aria-label="Account"\n                   ng-click="$mdMenu.open($event)">\n          <md-icon class="material-icons"> account_circle </md-icon>\n        </md-button>\n        <md-menu-content width="3" >\n          <md-menu-item ng-show="vm.isPoller">\n            <md-button ng-click="vm.goToPresenterMode()">\n              <md-icon class="material-icons">insert_chart</md-icon>\n              Presenter Mode\n            </md-button>\n          </md-menu-item>\n          <md-menu-divider ng-show="vm.isPoller"></md-menu-divider>\n          <md-menu-item>\n            <md-button ng-click="vm.showMyDisplayNameDialog()">\n              <md-icon class="material-icons">face</md-icon>\n              My Display Name\n            </md-button>\n          </md-menu-item>\n          <md-menu-item>\n            <md-button ng-click="vm.showMyFeedsDialog()">\n              <md-icon class="material-icons">playlist_add</md-icon>\n              My Feeds\n            </md-button>\n          </md-menu-item>\n          <md-menu-divider></md-menu-divider>\n          <md-menu-item>\n            <md-button ng-click="vm.logout()">\n              <md-icon class="material-icons">exit_to_app</md-icon>\n              Sign out\n            </md-button>\n          </md-menu-item>\n        </md-menu-content>\n      </md-menu>\n\n    </div>\n  </md-toolbar>-->
+<div class="background-message" ng-if="!vm.poll">There are no polls at the moment</div>
+<!-- Polls go here -->
+<!--<md-content flex layout-padding class="md-hue-1">-->
+<mars-plugin ng-if="vm.poll" mars-plugin-name="vm.poll.type" mars-plugin-view="poll.view" poll="vm.poll" result="vm.result">
+    <md-card class="missing-view">
+        <md-card-content layout="column" layout-align="center center">
+            <p>
+                <md-icon class="error-icon">error_outline</md-icon><br></p>
+            <p>Plugin view "{{vm.result.type}}.poll.view" is missing.</p>
+        </md-card-content>
+    </md-card>
+</mars-plugin>
+<!--</md-content>-->
+<!-- Button to change polls (if more than 1 exists) -->
+<md-button class="md-fab md-fab-bottom-right" aria-label="Switch Questions" ng-show="vm.multiplePollsActive" ng-click="vm.nextPoll()">
+    <md-icon class="material-icons">queue</md-icon>
+</md-button>
+<!--</div>-->

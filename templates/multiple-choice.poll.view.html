@@ -1,0 +1,9 @@
+<div ng-controller="MultipleChoicePollViewController as vm">
+    <md-card>
+        <md-card-content>
+            <h2 class="md-title text-select-disabled">{{ poll.data.question }}</h2>
+        </md-card-content>
+    </md-card>
+    <md-whiteframe layout="row" layout-align="start center" class="md-whiteframe-2dp mc-choice text-select-disabled" md-ink-ripple="#2196F3" ng-repeat="choice in poll.data.choices" ng-class="{\'bg-selected\': choice == vm.selectedChoice}" ng-click="vm.submitResponse(choice)">
+        <h2>{{ choice.label }}</h2><span flex>{{ choice.text }}</span></md-whiteframe>
+</div>

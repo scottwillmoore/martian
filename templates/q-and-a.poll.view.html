@@ -1,0 +1,17 @@
+<div ng-controller="QAndAPollViewController as vm">
+    <md-whiteframe ng-repeat="question in vm.questions" class="md-whiteframe-2dp wc-response" layout="row" layout-align="start center"><span flex>{{ question.data.question }}</span>
+        <md-button aria-label="Upvote" class="md-icon-button" type="submit" ng-click="vm.toggleUpvote(question)">
+            <md-icon class="material-icons" ng-class="{ \'q-and-a-selected\': question.upvoted }">thumb_up</md-icon>
+            <md-tooltip md-delay="400">Upvote</md-tooltip>
+        </md-button>
+    </md-whiteframe>
+    <form name="responseForm">
+        <md-whiteframe class="md-whiteframe-2dp wc-response" layout="row" layout-align="start center" mars-focus-when="!vm.hasSubmitted">
+            <md-input-container flex><label>Ask a question</label><input name="question" mars-autofocus md-maxlength="200" ng-model="vm.question"></md-input-container>
+            <md-button aria-label="Submit question" class="md-icon-button" type="submit" ng-click="vm.submitQuestion(vm.question)">
+                <md-icon class="material-icons">send</md-icon>
+                <md-tooltip md-delay="400">Submit Response</md-tooltip>
+            </md-button>
+        </md-whiteframe>
+    </form>
+</div>

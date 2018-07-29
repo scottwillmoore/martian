@@ -1,0 +1,10 @@
+{
+    "name": "martian",
+    "version": "1.0.0",
+    "author": "Scott Moore",
+    "license": "MIT",
+    "main": "index.js",
+    "dependencies": {
+        "puppeteer": "^1.6.1"
+    }
+}
